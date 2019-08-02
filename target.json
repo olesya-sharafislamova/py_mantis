@@ -1,17 +1,23 @@
 {
   "web": {
     "baseUrl": "http://localhost/mantisbt-1.2.20"
-  },
+    },
 
   "webAdmin": {
     "name": "administrator",
     "password": "root"
-  },
+    },
 
     "db": {
     "host": "localhost",
     "name": "bugtracker",
     "user": "root",
     "password": ""
-  }
+    },
+    "ftp": {
+      "host": "localhost",
+      "username": "mantis",
+      "password": "mantis"
+    }
+
 }
