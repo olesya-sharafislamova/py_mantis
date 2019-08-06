@@ -35,11 +35,13 @@ def config(request):
     return load_config(request.config.getoption("--target"))
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def configure_server(request, config):
     install_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
+
     def fin():
         restore_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
+
     request.addfinalizer(fin)
 
 
@@ -65,6 +67,7 @@ def destroy(request):
     def fin():
         fixture.session.ensure_logout()
         fixture.stop()
+
     request.addfinalizer(fin)
     return fixture
 
@@ -82,6 +85,7 @@ def db(request):
 
     def fin():
         db_fixture.destroy()
+
     request.addfinalizer(fin)
     return db_fixture
 

@@ -1,3 +1,4 @@
+
 class ProjectHelper:
 
     def __init__(self, app):
@@ -19,13 +20,21 @@ class ProjectHelper:
         self.app.open_project_page()
         wd.find_element_by_xpath("//input[@value='Create New Project']").click()
         self.fill_project_form(project)
-        wd.find_element_by_xpath("//input[@value='Add Project']").click()
+        wd.find_element_by_xpath("//input[@class='button']").click()
         self.app.open_project_page()
 
     def delete(self, id):
         wd = self.app.wd
         self.app.open_project_page()
         wd.find_element_by_xpath("//a[contains(@href,'manage_proj_edit_page.php?project_id=%s')]" % id).click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        self.app.open_project_page()
+
+    def delete_by_name(self, name):
+        wd = self.app.wd
+        self.app.open_project_page()
+        wd.find_element_by_link_text(name).click()
         wd.find_element_by_xpath("//input[@value='Delete Project']").click()
         wd.find_element_by_xpath("//input[@value='Delete Project']").click()
         self.app.open_project_page()

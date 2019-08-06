@@ -46,4 +46,3 @@ class Application:
 
     def stop(self):
         self.wd.quit()
-

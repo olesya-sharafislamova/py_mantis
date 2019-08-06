@@ -1,7 +1,3 @@
-
-
-#from data.add_project import constant as testdata
-
 from model.project import Project
 
 

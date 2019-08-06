@@ -2,6 +2,7 @@ from suds.client import Client
 from suds import WebFault
 from model.project import Project
 
+
 class SoapHelper:
 
     def __init__(self, app):
@@ -21,6 +22,5 @@ class SoapHelper:
         projects = client.service.mc_projects_get_user_accessible(self.app.config['webAdmin']['name'],
                                                                   self.app.config['webAdmin']['password'])
         for row in projects:
-            project_list.append(Project(name=row.name, status=row.status.name, view_status=row.view_state.name,
-                                        description=row.description))
+            project_list.append(Project(name=row.name, description=row.description))
         return project_list
